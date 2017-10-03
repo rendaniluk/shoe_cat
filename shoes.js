@@ -44,6 +44,7 @@
         });
         shoeDetails.innerHTML = shoeInfo;
       });
+      brandName.value = "select brand"
   };
   //function to get sizes
   var shoeSizes = function() {
@@ -59,45 +60,46 @@
         });
         shoeDetails.innerHTML = shoeInfo;
       });
+      sizeValue.value = "select size"
   };
 
-  //function to get brand and size
-  var brandAndSizes = function() {
-    var url = "https://shoecatapi.herokuapp.com/api/shoes/brand/" + brandName.value +
-      "/size/" + sizeValue.value;
-    console.log(url);
-    $.get(url)
-      .then(function(results) {
-        var apiResults = results;
-        // console.log(apiResults);
-        var shoeInfo = myTemplate({
-          shoeDetails: apiResults
-        });
-        shoeDetails.innerHTML = shoeInfo;
-      });
-  };
+  // //function to get brand and size
+  // var brandAndSizes = function() {
+  //   var url = "https://shoecatapi.herokuapp.com/api/shoes/brand/" + brandName.value +
+  //     "/size/" + sizeValue.value;
+  //   console.log(url);
+  //   $.get(url)
+  //     .then(function(results) {
+  //       var apiResults = results;
+  //       // console.log(apiResults);
+  //       var shoeInfo = myTemplate({
+  //         shoeDetails: apiResults
+  //       });
+  //       shoeDetails.innerHTML = shoeInfo;
+  //     });
+  // };
 
-  //function to add Stock
-  var addStock = function() {
-    var url = "https://shoecatapi.herokuapp.com/api/shoes/"
-    $.post(url)
-      .then(function(shoes) {
-        var shoes = {
-            "id": id.value,
-            "color": color.value,
-            "brand": brand.value,
-            "size": size.value,
-            "price": price.value,
-            "in_stock": in_stock.value
-          }
-          // var apiResults = results;
-          // console.log(apiResults);
-        var shoeInfo = myTemplate({
-          shoeDetails: apiResults
-        });
-        shoeDetails.innerHTML = shoeInfo;
-      });
-  };
+  // //function to add Stock
+  // var addStock = function() {
+  //   var url = "https://shoecatapi.herokuapp.com/api/shoes/"
+  //   $.post(url)
+  //     .then(function(shoes) {
+  //       var shoes = {
+  //           "id": id.value,
+  //           "color": color.value,
+  //           "brand": brand.value,
+  //           "size": size.value,
+  //           "price": price.value,
+  //           "in_stock": in_stock.value
+  //         }
+  //         // var apiResults = results;
+  //         // console.log(apiResults);
+  //       var shoeInfo = myTemplate({
+  //         shoeDetails: apiResults
+  //       });
+  //       shoeDetails.innerHTML = shoeInfo;
+  //     });
+  // };
 
 
 
