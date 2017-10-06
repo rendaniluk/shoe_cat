@@ -5,11 +5,62 @@
   <meta charset="utf-8">
   <link rel="stylesheet" href="shoes.css" media="screen" title="no title">
   <link rel="shortcut icon" href="logo/logo.png">
+  <!-- <link rel="stylesheet" href="shoes.css" media="screen" title="no title"> -->
   <link rel="stylesheet" href="shoes.css" media="screen" title="no title">
-  <script src="./jquery.min.js" type="text/javascript" charset="utf-8"></script>
-  <script src="./handlebars-v4.0.5.js" type="text/handlebars-x" charset="utf-8"></script>
-  <script src="./bootstrap/js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
+
+  <script src="jquery.min.js" type="text/javascript" charset="utf-8"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.6/handlebars.js"></script>
+  <script class="dropDownsTemplates" type="text/handlebars-x">
+    <span class="sheoCatalogue">
+        <label for="brand">Brand</label>
+          <select class="brandFilter">
+            <option value="">Select brand</option>
+                {{#each brand}}
+                  <option>{{this}}</option>
+                {{/each}}
+          </select>
+    </span>
+    <span class="sheoCatalogue">
+      <label for="size">Size</label>
+        <select class="sizeFilter">
+          <option value="">Select size</option>
+              {{#each size}}
+                <option>{{this}}</option>
+              {{/each}}
+        </select>
+    </span>
+  <input type="button" name="filterButton" value="Filter">
+  </script>
+  <script class="tableTemplate" type="text/handlebars-x">
+  <table class="tab" border="1px">
+    <tbody>
+      <thead>
+        <tr>
+          <th colspan="6">Stock avalailable</th>
+        </tr>
+        <tr>
+            <th>Shoe ID</th>
+            <th>Brands</th>
+            <th>Color</th>
+            <th>Size</th>
+            <th>Price</th>
+            <th>Stock</th>
+      </tr>
+     </thead>
+    {{#each shoeDetails}}
+
+    <tr>
+      <th>{{id}}</th>
+      <td>{{brand}}</td>
+      <td>{{color}}</td>
+      <td>{{size}}</td>
+      <td>R {{price}}.00</td>
+      <td>{{in_stock}}</td>
+      {{/each}}
+    </tr>
+</table>
+  </script>
+
   <title>Shoe Catalogue</title>
 </head>
 
@@ -22,74 +73,34 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item active">
+          <input class="btn btn-primary" id="showall" type="button" name="" value="Show All">
         </li>
       </ul>
 
     </div>
   </nav>
 
-  <!-- <div class="inputs"> -->
-  <input class="btn btn-primary" id="btn" type="button" name="" value="Show All" align="right">
-<br><br>
-        <form name="user_info" action="" method="get">
-            <label>Brands</label> : <select class="options" size="1">
-                <option value="select brand" disabled selected>select color</option>
-                <option value="Nike">Nike</option>
-                <option value="Adidas">Adidas</option>
-                <option value="Bronx">Bronx</option>
-                <option value="CAT">CAT</option>
-            </select><br>
-            <label>Size</label> : <select class="sizes" size="1">
-                <option value="select size" disabled selected>select size</option>
-                <!-- <option value="all">All</option> -->
-                <option value="2">2</option>
-                <option value="6">6</option>
-                <option value="7">7</option>
-                <option value="8">8</option>
-                <option value="9">9</option>
-              </select><br>
-            <!-- <input class="search" type="button" name="" value="Search" /> -->
-        </form>
-    <!-- </div> -->
-  <script class="template" type="text/handlebars-x">
-    <table class="tab" border="1px">
-      <tbody>
-        <thead>
-          <tr>
-            <th colspan="6">Stock avalailable</th>
-          </tr>
-          <tr>
-            <th>Shoe ID</th>
-            <th>Brands</th>
-            <th>Color</th>
-            <th>Size</th>
-            <th>Price</th>
-            <th>Stock</th>
-          </tr>
-        </thead>
-        {{#each shoeDetails}}
+  <!-- <input type="text" required name="name" class="brand" placeholder="enter shoe brand">
+  <input type="text" required name="name" class="size" placeholder="enter shoe size">
+  <input class="btn btn-primary" id="search" type="button" name="" value="Search" > -->
+  <!-- <div class="field">
+</div> -->
 
-        <tr>
-          <th>{{id}}</th>
-          <td>{{brand}}</td>
-          <td>{{color}}</td>
-          <td>{{size}}</td>
-          <td>R {{price}}.00</td>
-          <td>{{in_stock}}</td>
-          {{/each}}
-        </tr>
-    </table>
-  </script>
+  <div class="filters">
+  </div>
+
   <div class="shoeDetails">
 
   </div>
+
+
   <!-- <br>
   <h1>Add Stock</h1>
   <div class="">
     <input type="text" name="name" class="id" placeholder="enter shoe id">
-    <input type="text" name="name" class="brand" placeholder="enter shoe brand">
+    <input type="text" required name="name" class="brand" placeholder="enter shoe brand">
+    <input type="text" required name="name" class="size" placeholder="enter shoe size">
     <input type="text" name="name" class="color" placeholder="enter shoe color">
-    <input type="text" name="name" class="size" placeholder="enter shoe size">
     <input type="text" name="name" class="price" placeholder="enter shoe price">
     <input type="text" name="name" class="in_stock" placeholder="enter shoe stock">
   </div>

@@ -1,112 +1,97 @@
 (function() {
-  //the Dom
-  // var User = document.querySelector('.username');
-  var lookup = document.querySelector('#btn');
-  var shoeDetails = document.querySelector('.shoeDetails');
-  var template = document.querySelector('.template');
-  var brandName = document.querySelector('.options');
-  var sizeValue = document.querySelector('.sizes');
-  // var id = document.querySelector('.id')
-  // var brand = document.querySelector('.brand')
-  // var color = document.querySelector('.color')
-  // var size = document.querySelector('.size')
-  // var price = document.querySelector('.price')
-  // var in_stock = document.querySelector('.in_stock')
-    //
-  var myTemplate = Handlebars.compile(template.innerHTML);
-  // alert($)
+  //template compiler function
+  function initTemplate(templateSelector) {
+    var templateText = document.querySelector(templateSelector).innerHTML;
+    return Handlebars.compile(templateText);
+  }
+  //calling template compiler function passing selector
+  var filterTemplate = initTemplate('.dropDownsTemplates');
+  var filters = document.querySelector('.filters');
+
+  var tableTemplate = initTemplate('.tableTemplate')
+  var shoeDetailsHtml = document.querySelector('.shoeDetails');
+
+  //text input DOM
+
+  var showAll = document.querySelector('#showall')
+    //Drop down list ajax call
+  var sizesBrandsDropDowns = function() {
+    var url = "https://shoecatapi.herokuapp.com/api/shoes/sizebrandsdropdowns";
+    $.get(url)
+      .then(function(results) {
+        filters.innerHTML = filterTemplate({
+          brand: results.brands,
+          size: results.sizes
+        });
+      });
+  };
   //function to get allShoes from the api
   var allShoes = function() {
     var url = "https://shoecatapi.herokuapp.com/api/shoes";
     $.get(url)
-      .then(function(results) {
-        var apiResults = results;
-        // console.log(apiResults);
-        var shoeInfo = myTemplate({
-          shoeDetails: apiResults
-        });
-        shoeDetails.innerHTML = shoeInfo;
+      .then(function(all_shoes) {
+        shoeDetailsHtml.innerHTML = tableTemplate({
+          shoeDetails: all_shoes
+        })
       });
   };
-
-  //function to get shoes by brand from the api
-
-  var shoesBrands = function() {
-    var url = "https://shoecatapi.herokuapp.com/api/shoes/brand/" + brandName.value;
-    console.log(url);
-
+  //filter brand only
+  var filterBrand = function(brandName) {
+    var url = "https://shoecatapi.herokuapp.com/api/shoes/brand/" + brandName;
     $.get(url)
-      .then(function(results) {
-        var apiResults = results;
-        // console.log(apiResults);
-        var shoeInfo = myTemplate({
-          shoeDetails: apiResults
-        });
-        shoeDetails.innerHTML = shoeInfo;
+      .then(function(brands) {
+        shoeDetailsHtml.innerHTML = tableTemplate({
+          shoeDetails: brands
+        })
       });
-      brandName.value = "select brand"
   };
-  //function to get sizes
-  var shoeSizes = function() {
-    var url = "https://shoecatapi.herokuapp.com/api/shoes/size/" + sizeValue.value;
-    console.log(url);
-
+  //filter size only
+  var filterSize = function(shoeSize) {
+    var url = "https://shoecatapi.herokuapp.com/api/shoes/size/" + shoeSize;
     $.get(url)
-      .then(function(results) {
-        var apiResults = results;
-        // console.log(apiResults);
-        var shoeInfo = myTemplate({
-          shoeDetails: apiResults
-        });
-        shoeDetails.innerHTML = shoeInfo;
+      .then(function(sizes) {
+        shoeDetailsHtml.innerHTML = tableTemplate({
+          shoeDetails: sizes
+        })
       });
-      sizeValue.value = "select size"
+  };
+  //filter size only brand and size
+  var filterSizeBrand = function(brandName, shoeSize) {
+    var url = "https://shoecatapi.herokuapp.com/api/shoes/brand/" +
+      brandName +
+      "/size/" + shoeSize;
+    $.get(url)
+      .then(function(brandSize) {
+        shoeDetailsHtml.innerHTML = tableTemplate({
+          shoeDetails: brandSize
+        })
+      });
   };
 
-  // //function to get brand and size
-  // var brandAndSizes = function() {
-  //   var url = "https://shoecatapi.herokuapp.com/api/shoes/brand/" + brandName.value +
-  //     "/size/" + sizeValue.value;
-  //   console.log(url);
-  //   $.get(url)
-  //     .then(function(results) {
-  //       var apiResults = results;
-  //       // console.log(apiResults);
-  //       var shoeInfo = myTemplate({
-  //         shoeDetails: apiResults
-  //       });
-  //       shoeDetails.innerHTML = shoeInfo;
-  //     });
-  // };
-
-  // //function to add Stock
-  // var addStock = function() {
-  //   var url = "https://shoecatapi.herokuapp.com/api/shoes/"
-  //   $.post(url)
-  //     .then(function(shoes) {
-  //       var shoes = {
-  //           "id": id.value,
-  //           "color": color.value,
-  //           "brand": brand.value,
-  //           "size": size.value,
-  //           "price": price.value,
-  //           "in_stock": in_stock.value
-  //         }
-  //         // var apiResults = results;
-  //         // console.log(apiResults);
-  //       var shoeInfo = myTemplate({
-  //         shoeDetails: apiResults
-  //       });
-  //       shoeDetails.innerHTML = shoeInfo;
-  //     });
-  // };
-
-
-
+  //displaying data by calling all functions
+  sizesBrandsDropDowns();
   allShoes();
-  brandName.addEventListener('change', shoesBrands);
-  sizeValue.addEventListener('change', shoeSizes);
-  // brandAndSizes();
+  showAll.addEventListener('click', allShoes)
+  //adding event to drop down list
+  filters.addEventListener('click', function(evt) {
+    if (evt.target.name === 'filterButton') {
+      // get the references in the Event Listener as these elements are added dynamically
+      var sizeFilter = document.querySelector('.sizeFilter');
+      var brandFilter = document.querySelector('.brandFilter');
+      //getting the value of selected in drop down list
+      var brandSelected = brandFilter.value;
+      var sizeSelected = sizeFilter.value;
+      //calling our filters
+      if (brandSelected && !sizeSelected) {
+        filterBrand(brandSelected);
+      } else if (sizeSelected && !brandSelected) {
+        filterSize(sizeSelected);
+      }else if (brandSelected && sizeSelected) {
+        filterSizeBrand(brandSelected, sizeSelected)
+      }
+      brandFilter.value = "";
+      sizeFilter.value = "";
+    }
+  })
 
-  lookup.addEventListener('click', allShoes);
 })();

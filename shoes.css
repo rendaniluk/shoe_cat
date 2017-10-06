@@ -242,12 +242,14 @@ font-family: sans-serif;
 font-style: oblique;
 }
 .shoeDetails{
+  /*position: absolute;*/
   font-weight: bold;
   font-family: cursive;
   text-align: center;
   color: red;
   font-size: 40px;
-  width: 85%;
+  width: 50%;
+  margin:auto;
 }
 
 .shoeDetails_flats{
@@ -294,4 +296,67 @@ font-style: oblique;
 
 #myImG{
   width: 30px;
+display:inline;
+}
+
+td{
+  border: solid 0.5px ;
+}
+
+th{
+  border: solid 0.5px ;
+}
+
+.filters label{
+      display: inline-block;
+      width : 10%;
+      text-align: right;
+      font-weight: bold;
+      padding: 0.5em;
+      margin: 0.5em;
+}
+
+.filters select{
+      display: inline-block;
+      width : 10%;
+      text-align: right;
+      font-weight: bold;
+      padding: 0.5em;
+      margin: 0.5em;
+}
+
+.filters input{
+      display: inline-block;
+      width : 10%;
+      text-align: center;
+      font-weight: bold;
+      background-color: green;
+      padding: 0.5em;
+      margin: 0.5em;
+}
+
+.field input{
+   display:inline-block;
+      width : 10%;
+      text-align: center;
+      font-weight: bold;
+      padding: 0.5em;
+      margin: 0.5em;
+}
+
+.field label{
+      display:inline-block;
+      width : 10%;
+      font-weight: bold;
+      padding: 0.5em;
+      margin: 0.5em;
+}
+
+.add{
+  /*position: fixed;*/
+  border:solid black;
+  width: 50%;
+  margin:auto;
+  padding:auto;
+  display: none;
 }
