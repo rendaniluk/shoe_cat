@@ -1,4 +1,4 @@
-.container {
+/*.container {
     margin: 1em auto;
     padding: 1em auto;
     width: 95% auto;
@@ -28,6 +28,16 @@
     margin: auto;
     height: 11% auto;
     width: 100% auto;
+}
+
+.port-image
+{
+    width: 100%;
+}
+
+.gallery_product
+{
+    margin-bottom: 30px;
 }
 /*.Lady {
     opacity: 0.5;
@@ -168,7 +178,7 @@ ul li a:hover+.hidden, .hidden:hover {
 
 /*Hide checkbox*/
 
-input[type=checkbox] {
+/*input[type=checkbox] {
     display: none;
     -webkit-appearance: none;
 }
@@ -287,8 +297,8 @@ font-style: oblique;
   height: 150px;
   border: black solid;
   margin: 1em;
-}
-
+}*/
+/*
 .flats_shoes{
   width: 98%;
   margin-top: 50px;
@@ -359,4 +369,4 @@ th{
   margin:auto;
   padding:auto;
   display: none;
-}
+}*/

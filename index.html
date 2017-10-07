@@ -3,10 +3,17 @@
 
 <head>
   <meta charset="utf-8">
-  <link rel="stylesheet" href="shoes.css" media="screen" title="no title">
+  <!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-WCR3T32');</script>
+<!-- End Google Tag Manager -->
+  <!-- <link rel="stylesheet" href="shoes.css" media="screen" title="no title"> -->
   <link rel="shortcut icon" href="logo/logo.png">
   <!-- <link rel="stylesheet" href="shoes.css" media="screen" title="no title"> -->
-  <link rel="stylesheet" href="shoes.css" media="screen" title="no title">
+  <!-- <link rel="stylesheet" href="shoes.css" media="screen" title="no title"> -->
 
   <script src="jquery.min.js" type="text/javascript" charset="utf-8"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.6/handlebars.js"></script>
@@ -32,39 +39,63 @@
   <input type="button" name="filterButton" value="Filter">
   </script>
   <script class="tableTemplate" type="text/handlebars-x">
-  <table class="tab" border="1px">
+  {{#each shoeDetails}}
+  <div class="gallery_product col-xs-6">
+        <li><img src="http://fakeimg.pl/360x365/" class="img-responsive"></li>
+        <li>{{id}}</li>
+        <li>{{brand}}</li>
+        <li>{{color}}</li>
+        <li>{{size}}</li>
+        <li>R {{price}}.00</li>
+        <li>{{in_stock}}</li>
+
+  </div>
+  {{/each}}
+
+  </script>
+  <!-- <table class="tab" border="1px">
     <tbody>
       <thead>
         <tr>
           <th colspan="6">Stock avalailable</th>
         </tr>
         <tr>
-            <th>Shoe ID</th>
-            <th>Brands</th>
-            <th>Color</th>
-            <th>Size</th>
-            <th>Price</th>
-            <th>Stock</th>
-      </tr>
-     </thead>
-    {{#each shoeDetails}}
+          <th>Shoe ID</th>
+          <th>Brands</th>
+          <th>Color</th>
+          <th>Size</th>
+          <th>Price</th>
+          <th>Stock</th>
+        </tr>
+      </thead>
+      {{#each shoeDetails}}
 
-    <tr>
-      <th>{{id}}</th>
-      <td>{{brand}}</td>
-      <td>{{color}}</td>
-      <td>{{size}}</td>
-      <td>R {{price}}.00</td>
-      <td>{{in_stock}}</td>
-      {{/each}}
-    </tr>
-</table>
-  </script>
+      <tr>
+        <th>{{id}}</th>
+        <td>{{brand}}</td>
+        <td>{{color}}</td>
+        <td>{{size}}</td>
+        <td>R {{price}}.00</td>
+        <td>{{in_stock}}</td>
+        {{/each}}
+      </tr>
+    </table> -->
 
   <title>Shoe Catalogue</title>
 </head>
 
 <body>
+  <!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WCR3T32"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+  <form class="shoes_form" action="index.html" method="post">
+    <input required class="ID" type="Number" placeholder="enter shoe ID">
+    <input required class="quanty" type="Number" placeholder="enter quantity">
+    <input type="button" name="purchase" value="Purchase">
+    <input type="button" name="update" value="Update Stock">
+  </form>
+
   <nav class="navbar navbar-inverse bg-inverse">
     <span class="navbar-toggler-icon"><img class="logo" src="logo/logo.png" alt="uadivha's shoes"></span>
     </button>
@@ -79,33 +110,26 @@
 
     </div>
   </nav>
-
-  <!-- <input type="text" required name="name" class="brand" placeholder="enter shoe brand">
-  <input type="text" required name="name" class="size" placeholder="enter shoe size">
-  <input class="btn btn-primary" id="search" type="button" name="" value="Search" > -->
-  <!-- <div class="field">
-</div> -->
-
-  <div class="filters">
-  </div>
-
-  <div class="shoeDetails">
-
-  </div>
-
-
-  <!-- <br>
-  <h1>Add Stock</h1>
-  <div class="">
-    <input type="text" name="name" class="id" placeholder="enter shoe id">
-    <input type="text" required name="name" class="brand" placeholder="enter shoe brand">
-    <input type="text" required name="name" class="size" placeholder="enter shoe size">
-    <input type="text" name="name" class="color" placeholder="enter shoe color">
-    <input type="text" name="name" class="price" placeholder="enter shoe price">
-    <input type="text" name="name" class="in_stock" placeholder="enter shoe stock">
-  </div>
-  <br> -->
-  <!-- <input type="button" class="add" name="name" value="Add Stock"> -->
+<div class="container">
+<div class="filters">
+</div>
+<div class="shoeDetails">
+</div>
+<br>
+<h1>Add Stock</h1>
+<div class="form">
+  <form class="addStock" method="post">
+    <input type="text" required name="id" class="inputText" placeholder="enter shoe id">
+    <input type="text" required name="brand" class="inputText" placeholder="enter shoe brand">
+    <input type="text" required name="size" class="inputText" placeholder="enter shoe size">
+    <input type="text" required name="color" class="inputText" placeholder="enter shoe color">
+    <input type="text" required name="price" class="inputText" placeholder="enter shoe price">
+    <input type="text" required name="in_stock" class="inputText" placeholder="enter shoe stock">
+    <input type="submit" class="add" name="name" value="Add Stock">
+  </form>
+</div>
+<br>
+</div>
 </body>
 <script src="shoes.js" type="text/javascript" charset="utf-8"></script>
 
