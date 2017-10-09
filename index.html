@@ -3,18 +3,13 @@
 
 <head>
   <meta charset="utf-8">
-  <!-- Google Tag Manager -->
-<!-- <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-WCR3T32');</script> -->
-<!-- End Google Tag Manager -->
-  <!-- <link rel="stylesheet" href="shoes.css" media="screen" title="no title"> -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <title>Shoe Catalogue</title>
   <link rel="shortcut icon" href="logo/logo.png">
-  <!-- <link rel="stylesheet" href="shoes.css" media="screen" title="no title"> -->
-  <!-- <link rel="stylesheet" href="shoes.css" media="screen" title="no title"> -->
-
+  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<link href="css/shop-homepage.css" rel="stylesheet">
   <script src="jquery.min.js" type="text/javascript" charset="utf-8"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.6/handlebars.js"></script>
   <script class="dropDownsTemplates" type="text/handlebars-x">
@@ -36,21 +31,36 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
               {{/each}}
         </select>
     </span>
-  <input type="button" name="filterButton" value="Filter">
+    <input type="button" class="btn btn-success" name="filterButton" value="Search">
   </script>
   <script class="tableTemplate" type="text/handlebars-x">
-  {{#each shoeDetails}}
-  <div class="gallery_product col-xs-6">
-        <div><img class="logo" src="{{image}}" alt="uadivha's shoes"></img></div>
-        <div>{{id}}</div>
-        <div>{{brand}}</div>
-        <div>{{color}}</div>
-        <div>{{size}}</div>
-        <div>R {{price}}.00</div>
-        <div>{{in_stock}}</div>
+    <div class="row">
+      {{#each shoeDetails}}
+      <div class="col-lg-4 col-md-6 mb-4">
+        <div class="card h-100">
 
-  </div>
-  {{/each}}
+          <div><img class="card-img-top" src="{{image}}" width="360x360" height="360x360" alt="uadivha's shoes"></img>
+          </div>
+          <div class="card-body">
+
+            <div>
+              <Strong>Shoe ID:</Strong>{{id}}</div>
+            <div>
+              <Strong>Brand:</Strong>{{brand}}</div>
+            <div>
+              <Strong>Color:</Strong>{{color}}</div>
+            <div>
+              <Strong>Size :</Strong>{{size}}</div>
+            <div>
+              <Strong>Price :</Strong> R {{price}}.00</div>
+            <div>
+              <Strong>In Stock :</Strong>{{in_stock}}</div>
+          </div>
+        </div>
+      </div>
+
+      {{/each}}
+    </div>
 
   </script>
   <!-- <table class="tab" border="1px">
@@ -80,52 +90,124 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         {{/each}}
       </tr>
     </table> -->
-
-  <title>Shoe Catalogue</title>
 </head>
 
 <body>
-  <!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WCR3T32"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) -->
-  <form class="shoes_form" action="index.html" method="post">
-    <input name="shoeId" class="ID" min="1" type="Number" placeholder="enter shoe ID">
-    <input name="qty" class="quanty" min="1" type="Number" placeholder="enter quantity">
-    <input type="button" name="purchase" value="Purchase">
-    <input type="button" name="update" value="Update Stock">
-  </form>
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-inverse bg-dark text-white fixed-top">
+      <!-- <img class="logo" src="logo/logo.png" alt="uadivha's shoes"> -->
+      <a class="navbar-brand">Shoe Shop API</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <div class="filters">
+        </div>
+          <ul class="navbar-nav ml-auto">
+            <input class="btn btn-secondary" id="showall" type="button" name="" value="Show All">
+            <!-- Button trigger modal -->
+            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#addshoes">
+    Add Shoes
+  </button>
+  <!-- Button trigger modal -->
+  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#updatestok">
+    Update Stock
+  </button>
+        </ul>
+      </div>
+  </nav>
+  <!-- Page Content -->
+  <div class="container">
+    <div class="row">
+    <div class="col-md-2">
+      <div class="">
+        <form class="shoes_form" action="index.html" method="post">
+          <input name="shoeId" class="ID" min="1" type="Number" placeholder="enter shoe ID">
+          <input name="qty" class="quanty" min="1" type="Number" placeholder="enter quantity">
+          <input type="button" class="btn btn-success" name="purchase" value="Purchase">
+        </form>
 
-  <nav class="navbar navbar-inverse bg-inverse">
-    <span class="navbar-toggler-icon"><img class="logo" src="logo/logo.png" alt="uadivha's shoes"></span>
-    <h1>Welcome to Uadivha's Shoe Shop</h1>
 
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
-      <input class="btn btn-primary" id="showall" type="button" name="" value="Show All">
+          <!-- Modal -->
+          <div class="modal fade" id="updatestok" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <form class="updateForm" action="index.html" method="post">
+                  <input name="shoeIdup" class="IDup" min="1" type="Number" placeholder="enter shoe ID">
+                  <input name="qtyup" class="quantyup" min="1" type="Number" placeholder="enter quantity">
+                  <input type="button" class="btn btn-success" name="update" value="Update Stock">
+                </form>
 
-<div class="container">
-<div class="filters">
-</div>
-<div class="shoeDetails">
-</div>
-<br>
-<h1>Add Stock</h1>
-<div class="form">
-  <form class="addStock" method="post">
-    <input type="text" required name="id" class="inputText" placeholder="enter shoe id">
-    <input type="text" required name="brand" class="inputText" placeholder="enter shoe brand">
-    <input type="text" required name="size" class="inputText" placeholder="enter shoe size">
-    <input type="text" required name="color" class="inputText" placeholder="enter shoe color">
-    <input type="text" required name="price" class="inputText" placeholder="enter shoe price">
-    <input type="text" required name="image" class="inputText" placeholder="enter shoe image url">
-    <input type="text" required name="in_stock" class="inputText" placeholder="enter shoe stock">
-    <input type="submit" class="add" name="name" value="Add Stock">
-  </form>
-</div>
-<br>
-</div>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+
+
+
+
+
+      </div>
+      </div>
+      <div class="col-md-10">
+      <div class="shoeDetails">
+      </div>
+    </div>
+
+    </div>
+
+
+      <!-- Modal -->
+      <div class="modal fade" id="addshoes" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Add Stock</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+            </div>
+            <div class="modal-body">
+              <div class="form">
+                <form class="addStock" method="post">
+                  <input type="text" required name="id" class="inputText" align="center" placeholder="enter shoe id">
+                  <input type="text" required name="brand" class="inputText" align="center" placeholder="enter shoe brand">
+                  <input type="text" required name="size" class="inputText" align="center" placeholder="enter shoe size">
+                  <input type="text" required name="color" class="inputText" align="center" placeholder="enter shoe color">
+                  <input type="text" required name="price" class="inputText" align="center" placeholder="enter shoe price">
+                  <input type="text" required name="image" class="inputText" align="center" placeholder="enter shoe image url">
+                  <input type="text" required name="in_stock" class="inputText" align="center" placeholder="enter shoe stock">
+              </div>
+            </div>
+            <div class="modal-footer">
+              <input type="submit" class="btn btn-success" name="name" value="Add Stock">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <br>
+  </div>
 </body>
 <script src="shoes.js" type="text/javascript" charset="utf-8"></script>
+<!-- Bootstrap core JavaScript -->
+<!-- <script src="vendor/jquery/jquery.min.js"></script> -->
+<script src="vendor/popper/popper.min.js"></script>
+<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
 
 </html>

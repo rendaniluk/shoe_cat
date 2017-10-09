@@ -92,7 +92,7 @@
       "/qty/" + shoeQuantity;
     $.post(url)
       .then(function(bought) {
-
+ // alert(bought)
         console.log(bought);
         // shoeDetailsHtml.innerHTML = tableTemplate({
         //   shoeDetails: brandSize
@@ -154,25 +154,29 @@
       } else {
         alert("Fields Required");
       }
-
-
-    } else if (evt.target.name === 'update') {
-      // Selecting dom elements for
-      var shoeId = document.querySelector('.ID');
-      var shoeQuantity = document.querySelector('.quanty');
-      //getting the values of text inputs
-      var shoeIdTyped = shoeId.value;
-      var shoeQuantityTyped = shoeQuantity.value;
-      //calling purchase function
-      if (shoeIdTyped && shoeQuantityTyped) {
-        upDate(shoeIdTyped, shoeQuantityTyped);
-      } else {
-        alert("Fields Required");
-      }
     }
     allShoes();
 
   })
 
+var updateForm = document.querySelector('.updateForm')
+updateForm.addEventListener('click', function(evt){
+  if (evt.target.name === 'update') {
+    // Selecting dom elements for
+    var shoeId = document.querySelector('.IDup');
+    var shoeQuantity = document.querySelector('.quantyup');
+    //getting the values of text inputs
+    var shoeIdTyped = shoeId.value;
+    var shoeQuantityTyped = shoeQuantity.value;
+    //calling purchase function
+    if (shoeIdTyped && shoeQuantityTyped) {
+      upDate(shoeIdTyped, shoeQuantityTyped);
+    } else {
+      alert("Fields Required");
+    }
+  }
+  allShoes();
+
+})
 
 })();
