@@ -12,7 +12,7 @@
   var shoeDetailsHtml = document.querySelector('.shoeDetails');
 
   $(".addStock").submit(function(e) {
-    var url = "https://shoecatapi.herokuapp.com/api/shoes"; // the script where you handle the form input.
+    var url = "http://localhost:5000/api/shoes"; // the script where you handle the form input.
 
     $.ajax({
       type: "POST",
@@ -31,7 +31,7 @@
     //Drop down list ajax call
   var sizesBrandsDropDowns = function() {
     var url =
-      "https://shoecatapi.herokuapp.com/api/shoes/sizebrandsdropdowns";
+      "http://localhost:5000/api/shoes/sizebrandsdropdowns";
     $.get(url)
       .then(function(results) {
         filters.innerHTML = filterTemplate({
@@ -44,7 +44,7 @@
   };
   //function to get allShoes from the api
   var allShoes = function() {
-    var url = "https://shoecatapi.herokuapp.com/api/shoes";
+    var url = "http://localhost:5000/api/shoes";
     $.get(url)
       .then(function(all_shoes) {
         shoeDetailsHtml.innerHTML = tableTemplate({
@@ -54,7 +54,7 @@
   };
   //filter brand only
   var filterBrand = function(brandName) {
-    var url = "https://shoecatapi.herokuapp.com/api/shoes/brand/" +
+    var url = "http://localhost:5000/api/shoes/brand/" +
       brandName;
     $.get(url)
       .then(function(brands) {
@@ -65,7 +65,7 @@
   };
   //filter size only
   var filterSize = function(shoeSize) {
-    var url = "https://shoecatapi.herokuapp.com/api/shoes/size/" + shoeSize;
+    var url = "http://localhost:5000/api/shoes/size/" + shoeSize;
     $.get(url)
       .then(function(sizes) {
         shoeDetailsHtml.innerHTML = tableTemplate({
@@ -75,7 +75,7 @@
   };
   //filter size only brand and size
   var filterSizeBrand = function(brandName, shoeSize) {
-    var url = "https://shoecatapi.herokuapp.com/api/shoes/brand/" +
+    var url = "http://localhost:5000/api/shoes/brand/" +
       brandName +
       "/size/" + shoeSize;
     $.get(url)
@@ -87,7 +87,7 @@
   };
 
   var purchase = function(shoeId, shoeQuantity) {
-    var url = "https://shoecatapi.herokuapp.com/api/shoes/sold/" +
+    var url = "http://localhost:5000/api/shoes/sold/" +
       shoeId +
       "/qty/" + shoeQuantity;
     $.post(url)
@@ -102,7 +102,7 @@
 
 
   var upDate = function(shoeId, shoeQuantity) {
-    var url = "https://shoecatapi.herokuapp.com/api/shoes/stockadd/" +
+    var url = "http://localhost:5000/api/shoes/stockadd/" +
       shoeId +
       "/qty/" + shoeQuantity;
     $.post(url)
@@ -149,8 +149,13 @@
       var shoeIdTyped = shoeId.value;
       var shoeQuantityTyped = shoeQuantity.value;
       //calling purchase function
-      purchase(shoeIdTyped, shoeQuantityTyped);
-      allShoes();
+      if (shoeIdTyped && shoeQuantityTyped) {
+        purchase(shoeIdTyped, shoeQuantityTyped);
+      } else {
+        alert("Fields Required");
+      }
+
+
     } else if (evt.target.name === 'update') {
       // Selecting dom elements for
       var shoeId = document.querySelector('.ID');
@@ -159,9 +164,13 @@
       var shoeIdTyped = shoeId.value;
       var shoeQuantityTyped = shoeQuantity.value;
       //calling purchase function
-      upDate(shoeIdTyped, shoeQuantityTyped);
-      allShoes();
+      if (shoeIdTyped && shoeQuantityTyped) {
+        upDate(shoeIdTyped, shoeQuantityTyped);
+      } else {
+        alert("Fields Required");
+      }
     }
+    allShoes();
 
   })
 

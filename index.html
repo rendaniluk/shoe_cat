@@ -4,11 +4,11 @@
 <head>
   <meta charset="utf-8">
   <!-- Google Tag Manager -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+<!-- <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
 j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-WCR3T32');</script>
+})(window,document,'script','dataLayer','GTM-WCR3T32');</script> -->
 <!-- End Google Tag Manager -->
   <!-- <link rel="stylesheet" href="shoes.css" media="screen" title="no title"> -->
   <link rel="shortcut icon" href="logo/logo.png">
@@ -41,13 +41,13 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   <script class="tableTemplate" type="text/handlebars-x">
   {{#each shoeDetails}}
   <div class="gallery_product col-xs-6">
-        <li><img src="http://fakeimg.pl/360x365/" class="img-responsive"></li>
-        <li>{{id}}</li>
-        <li>{{brand}}</li>
-        <li>{{color}}</li>
-        <li>{{size}}</li>
-        <li>R {{price}}.00</li>
-        <li>{{in_stock}}</li>
+        <div><img class="logo" src="{{image}}" alt="uadivha's shoes"></img></div>
+        <div>{{id}}</div>
+        <div>{{brand}}</div>
+        <div>{{color}}</div>
+        <div>{{size}}</div>
+        <div>R {{price}}.00</div>
+        <div>{{in_stock}}</div>
 
   </div>
   {{/each}}
@@ -90,26 +90,20 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
   <form class="shoes_form" action="index.html" method="post">
-    <input required class="ID" type="Number" placeholder="enter shoe ID">
-    <input required class="quanty" type="Number" placeholder="enter quantity">
+    <input name="shoeId" class="ID" min="1" type="Number" placeholder="enter shoe ID">
+    <input name="qty" class="quanty" min="1" type="Number" placeholder="enter quantity">
     <input type="button" name="purchase" value="Purchase">
     <input type="button" name="update" value="Update Stock">
   </form>
 
   <nav class="navbar navbar-inverse bg-inverse">
     <span class="navbar-toggler-icon"><img class="logo" src="logo/logo.png" alt="uadivha's shoes"></span>
-    </button>
     <h1>Welcome to Uadivha's Shoe Shop</h1>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item active">
-          <input class="btn btn-primary" id="showall" type="button" name="" value="Show All">
-        </li>
-      </ul>
 
-    </div>
-  </nav>
+      <input class="btn btn-primary" id="showall" type="button" name="" value="Show All">
+
 <div class="container">
 <div class="filters">
 </div>
@@ -124,6 +118,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <input type="text" required name="size" class="inputText" placeholder="enter shoe size">
     <input type="text" required name="color" class="inputText" placeholder="enter shoe color">
     <input type="text" required name="price" class="inputText" placeholder="enter shoe price">
+    <input type="text" required name="image" class="inputText" placeholder="enter shoe image url">
     <input type="text" required name="in_stock" class="inputText" placeholder="enter shoe stock">
     <input type="submit" class="add" name="name" value="Add Stock">
   </form>
