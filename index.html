@@ -9,7 +9,7 @@
   <title>Shoe Catalogue</title>
   <link rel="shortcut icon" href="logo/logo.png">
   <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-<link href="css/shop-homepage.css" rel="stylesheet">
+  <link href="css/shop-homepage.css" rel="stylesheet">
   <script src="jquery.min.js" type="text/javascript" charset="utf-8"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.6/handlebars.js"></script>
   <script class="dropDownsTemplates" type="text/handlebars-x">
@@ -61,74 +61,43 @@
 
       {{/each}}
     </div>
-
   </script>
-  <!-- <table class="tab" border="1px">
-    <tbody>
-      <thead>
-        <tr>
-          <th colspan="6">Stock avalailable</th>
-        </tr>
-        <tr>
-          <th>Shoe ID</th>
-          <th>Brands</th>
-          <th>Color</th>
-          <th>Size</th>
-          <th>Price</th>
-          <th>Stock</th>
-        </tr>
-      </thead>
-      {{#each shoeDetails}}
-
-      <tr>
-        <th>{{id}}</th>
-        <td>{{brand}}</td>
-        <td>{{color}}</td>
-        <td>{{size}}</td>
-        <td>R {{price}}.00</td>
-        <td>{{in_stock}}</td>
-        {{/each}}
-      </tr>
-    </table> -->
 </head>
 
 <body>
   <!-- Navigation -->
   <nav class="navbar navbar-expand-lg navbar-inverse bg-dark text-white fixed-top">
-      <!-- <img class="logo" src="logo/logo.png" alt="uadivha's shoes"> -->
-      <a class="navbar-brand">Shoe Shop API</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+    <!-- <img class="logo" src="logo/logo.png" alt="uadivha's shoes"> -->
+    <a class="navbar-brand">Shoe Shop API</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="collapse navbar-collapse" id="navbarResponsive">
-        <div class="filters">
-        </div>
-          <ul class="navbar-nav ml-auto">
-            <input class="btn btn-secondary" id="showall" type="button" name="" value="Show All">
-            <!-- Button trigger modal -->
-            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#addshoes">
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <div class="filters">
+      </div>
+      <ul class="navbar-nav ml-auto">
+        <input class="btn btn-secondary" id="showall" type="button" name="" value="Show All">
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#addshoes">
     Add Shoes
   </button>
-  <!-- Button trigger modal -->
-  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#updatestok">
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#updatestok">
     Update Stock
   </button>
-        </ul>
-      </div>
+      </ul>
+    </div>
   </nav>
   <!-- Page Content -->
   <div class="container">
     <div class="row">
-    <div class="col-md-2">
-      <div class="">
-        <form class="shoes_form" action="index.html" method="post">
-          <input name="shoeId" class="ID" min="1" type="Number" placeholder="enter shoe ID">
-          <input name="qty" class="quanty" min="1" type="Number" placeholder="enter quantity">
-          <input type="button" class="btn btn-success" name="purchase" value="Purchase">
-        </form>
-
-
-
+      <div class="col-md-2">
+        <div class="">
+          <form class="shoes_form" action="index.html" method="post">
+            <input name="shoeId" class="ID" min="1" type="Number" placeholder="enter shoe ID">
+            <input name="qty" class="quanty" min="1" type="Number" placeholder="enter quantity">
+            <input type="button" class="btn btn-success" name="purchase" value="Purchase">
+          </form>
           <!-- Modal -->
           <div class="modal fade" id="updatestok" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
@@ -141,11 +110,10 @@
                 </div>
                 <div class="modal-body">
                   <form class="updateForm" action="index.html" method="post">
-                  <input name="shoeIdup" class="IDup" min="1" type="Number" placeholder="enter shoe ID">
-                  <input name="qtyup" class="quantyup" min="1" type="Number" placeholder="enter quantity">
-                  <input type="button" class="btn btn-success" name="update" value="Update Stock">
-                </form>
-
+                    <input name="shoeIdup" class="IDup" min="1" type="Number" placeholder="enter shoe ID">
+                    <input name="qtyup" class="quantyup" min="1" type="Number" placeholder="enter quantity">
+                    <input type="button" class="btn btn-success" name="update" value="Update Stock">
+                  </form>
                 </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -153,55 +121,44 @@
               </div>
             </div>
           </div>
-
-
-
-
-
-
-
-      </div>
-      </div>
-      <div class="col-md-10">
-      <div class="shoeDetails">
-      </div>
-    </div>
-
-    </div>
-
-
-      <!-- Modal -->
-      <div class="modal fade" id="addshoes" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">Add Stock</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-            </div>
-            <div class="modal-body">
-              <div class="form">
-                <form class="addStock" method="post">
-                  <input type="text" required name="id" class="inputText" align="center" placeholder="enter shoe id">
-                  <input type="text" required name="brand" class="inputText" align="center" placeholder="enter shoe brand">
-                  <input type="text" required name="size" class="inputText" align="center" placeholder="enter shoe size">
-                  <input type="text" required name="color" class="inputText" align="center" placeholder="enter shoe color">
-                  <input type="text" required name="price" class="inputText" align="center" placeholder="enter shoe price">
-                  <input type="text" required name="image" class="inputText" align="center" placeholder="enter shoe image url">
-                  <input type="text" required name="in_stock" class="inputText" align="center" placeholder="enter shoe stock">
-              </div>
-            </div>
-            <div class="modal-footer">
-              <input type="submit" class="btn btn-success" name="name" value="Add Stock">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            </div>
-            </form>
-          </div>
         </div>
       </div>
-
-      <br>
+      <div class="col-md-10">
+        <div class="shoeDetails">
+        </div>
+      </div>
+    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="addshoes" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Add Stock</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          </div>
+          <div class="modal-body">
+            <div class="form">
+              <form class="addStock" method="post">
+                <input type="text" required name="id" class="inputText" align="center" placeholder="enter shoe id">
+                <input type="text" required name="brand" class="inputText" align="center" placeholder="enter shoe brand">
+                <input type="text" required name="size" class="inputText" align="center" placeholder="enter shoe size">
+                <input type="text" required name="color" class="inputText" align="center" placeholder="enter shoe color">
+                <input type="text" required name="price" class="inputText" align="center" placeholder="enter shoe price">
+                <input type="text" required name="image" class="inputText" align="center" placeholder="enter shoe image url">
+                <input type="text" required name="in_stock" class="inputText" align="center" placeholder="enter shoe stock">
+            </div>
+          </div>
+          <div class="modal-footer">
+            <input type="submit" class="btn btn-success" name="name" value="Add Stock">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <br>
   </div>
 </body>
 <script src="shoes.js" type="text/javascript" charset="utf-8"></script>
@@ -209,5 +166,4 @@
 <!-- <script src="vendor/jquery/jquery.min.js"></script> -->
 <script src="vendor/popper/popper.min.js"></script>
 <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
-
 </html>

@@ -168,7 +168,7 @@ updateForm.addEventListener('click', function(evt){
     //getting the values of text inputs
     var shoeIdTyped = shoeId.value;
     var shoeQuantityTyped = shoeQuantity.value;
-    //calling purchase function
+    //calling update function
     if (shoeIdTyped && shoeQuantityTyped) {
       upDate(shoeIdTyped, shoeQuantityTyped);
     } else {
