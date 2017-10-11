@@ -37,24 +37,29 @@
     <div class="row">
       {{#each shoeDetails}}
       <div class="col-lg-4 col-md-6 mb-4">
-        <div class="card h-100">
+        <div class="card h-100" style="border: #000000 1px outset;">
 
-          <div><img class="card-img-top" src="{{image}}" width="360x360" height="360x360" alt="uadivha's shoes"></img>
+          <div><img class="card-img-top" src="{{image}}" width="360x360" height="360x360" style="border: #DCDCDC 1px outset;" alt="uadivha's shoes"></img>
           </div>
-          <div class="card-body">
+          <div class="card-body" style="border: #000000 0.2px outset;">
 
-            <div>
-              <Strong>Shoe ID:</Strong>{{id}}</div>
-            <div>
-              <Strong>Brand:</Strong>{{brand}}</div>
-            <div>
-              <Strong>Color:</Strong>{{color}}</div>
-            <div>
-              <Strong>Size :</Strong>{{size}}</div>
-            <div>
-              <Strong>Price :</Strong> R {{price}}.00</div>
-            <div>
-              <Strong>In Stock :</Strong>{{in_stock}}</div>
+            <div class="row" style="border: #DCDCDC 0.5px outset;">
+              <div class="col-sm-6"><Strong>Shoe ID</Strong></div><div class="col-sm-6" align="right">{{id}}</div></div>
+
+              <div class="row" style="border: #DCDCDC 0.5px outset;">
+                <div class="col-sm-6"><Strong>Brand</Strong></div><div class="col-sm-6" align="right">{{brand}}</div></div>
+
+                <div class="row" style="border: #DCDCDC 0.5px outset;">
+                  <div class="col-sm-6"><Strong>Color</Strong></div><div class="col-sm-6" align="right">{{color}}</div></div>
+
+                  <div class="row" style="border: #DCDCDC 0.5px outset;">
+                    <div class="col-sm-6"><Strong>Size</Strong></div><div class="col-sm-6" align="right">{{size}}</div></div>
+
+                    <div class="row" style="border: #DCDCDC 0.5px outset;">
+                      <div class="col-sm-6"><Strong>Price</Strong></div><div class="col-sm-6" align="right"> R {{price}}.00</div></div>
+
+                      <div class="row" style="border: #DCDCDC 0.5px outset;">
+                        <div class="col-sm-6"><Strong>In Stock</Strong></div><div class="col-sm-6" align="right">{{in_stock}}</div></div>
           </div>
         </div>
       </div>
@@ -62,6 +67,16 @@
       {{/each}}
     </div>
   </script>
+  <!-- <div>
+    <Strong>Brand:</Strong>{{brand}}</div>
+    <div>
+      <Strong>Color:</Strong>{{color}}</div>
+      <div>
+        <Strong>Size :</Strong>{{size}}</div>
+        <div>
+          <Strong>Price :</Strong> R {{price}}.00</div>
+          <div>
+            <Strong>In Stock :</Strong>{{in_stock}}</div> -->
 </head>
 
 <body>
@@ -140,7 +155,7 @@
           </div>
           <div class="modal-body">
             <div class="form">
-              <form class="addStock" method="post">
+              <form class="form-control addStock" method="post">
                 <input type="text" required name="id" class="inputText" align="center" placeholder="enter shoe id">
                 <input type="text" required name="brand" class="inputText" align="center" placeholder="enter shoe brand">
                 <input type="text" required name="size" class="inputText" align="center" placeholder="enter shoe size">
