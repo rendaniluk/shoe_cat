@@ -20,9 +20,17 @@
       data: $(".addStock").serialize(), // serializes the form's elements.
       success: function(data) {
         allShoes();
+        document.querySelector('.inputTextID').value = "";
+        document.querySelector('.inputTextBRAND').value = "";
+        document.querySelector('.inputTextSIZE').value = "";
+        document.querySelector('.inputTextCOLOR').value = "";
+        document.querySelector('.inputTextPRICE').value = "";
+        document.querySelector('.inputTextURL').value = "";
+        document.querySelector('.inputTextSTOCK').value = "";
       }
     });
     e.preventDefault(); // avoid to execute the actual submit of the form.
+    // document.querySelector('.addStock').value = "";
   });
 
 
