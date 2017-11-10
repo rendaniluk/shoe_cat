@@ -19,3 +19,15 @@ body {
     padding: 1em auto;
     width: 95% auto;
 }
+
+.inputs {
+    align: center;
+    background-color: whitesmoke;
+    width: auto;
+    margin:1em;
+}
+.inputs>form {
+    align: center;
+    width: auto;
+    margin-left:35em;
+}
